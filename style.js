@@ -146,3 +146,38 @@ function same(arr1, arr2){
 console.log(same([1,2,3], [4,1,9])) // true
 console.log(same([1,2,3], [1,9])) // false
 console.log(same([1,2,1], [4,4,1])) // false (must be same frequency)
+
+
+// Discuss Frequency Counter Solution
+// --- Directions
+// Given a string, return the character that is most
+// commonly used in the string.
+// --- Examples
+// maxChar("abcccccccd") === "c"
+// maxChar("apple 1231111") === "1
+// use a frequencyCounter no nested loops
+
+function maxChar(str){
+    const strLowerCase = str.toLowerCase();
+    
+    let freqCounter = {};
+
+    for (let i = 0; i < strLowerCase.length; i++){
+        let letter = strLowerCase[i];
+        freqCounter[letter] = (freqCounter[letter] || 0) + 1;
+    }
+
+    let largest = 0
+
+    for (let key in freqCounter) {
+        if (freqCounter[key] > largest) {
+            largest = freqCounter[key]
+            letter = key
+        }
+    }
+    
+    return letter;
+}
+
+console.log(maxChar("abcccccccd")) // === "c"
+console.log(maxChar("apple 1231111")) // === "1
